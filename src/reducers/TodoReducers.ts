@@ -1,14 +1,14 @@
 import { Action, ActionTypes  } from '../actions/TodoActions'
 import Todo from '../models/Todo'
 
-export interface State {
+export interface IState {
   todos: Todo[]
 }
-export const initialState: State = {
+export const initialState: IState = {
   todos: []
 }
 
-export function todoReducer(state: State = initialState, 
+export function todoReducer(state: IState = initialState, 
   action: Action) {
 
     switch (action.type){

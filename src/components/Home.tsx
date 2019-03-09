@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface AppProps {
+interface IAppProps {
   message: string
 }
 
-export default class Home extends React.Component<AppProps> {
+export default class Home extends React.Component<IAppProps> {
   public render() {
     return (
       <div>

@@ -7,15 +7,15 @@ import * as fromTodos from './TodoReducers'
  * It contains every substate of the app
  */
 
- export interface State {
-   todos: fromTodos.State
+ export interface IState {
+   todos: fromTodos.IState
  }
 
 /*
  * initialState of the app
  */
 
- export const initialState: State = {
+ export const initialState: IState = {
    todos: fromTodos.initialState
  }
 

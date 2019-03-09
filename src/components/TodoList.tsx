@@ -1,17 +1,17 @@
 import * as React from 'react';
 import Todo from '../models/Todo'
 
-interface AppProps {
+interface IAppProps {
   todos: Todo[]
 }
 
-interface State {
+interface IState {
   todo: string
   todos: Todo[]
 }
 
-class TodoList extends React.Component<AppProps, State> {
-  constructor(props: AppProps) {
+class TodoList extends React.Component<IAppProps, IState> {
+  constructor(props: IAppProps) {
     super(props)
   
     this.state = {
