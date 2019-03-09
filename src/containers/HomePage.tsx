@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Home from '../components/Home'
 
-interface AppProps {
+interface IAppProps {
   home: {}
 }
 
-export default class HomePage extends React.Component<AppProps> {
+export default class HomePage extends React.Component<IAppProps> {
   public render() {
     return (
       <div>

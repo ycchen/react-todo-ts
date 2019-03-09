@@ -1,30 +1,30 @@
-import { combineReducers} from 'redux'
-import * as fromTodos from './TodoReducers'
+// import { combineReducers} from 'redux'
+// import * as fromTodos from './TodoReducers'
 
 
-/*
- * This is the root state of the app
- * It contains every substate of the app
- */
+// /*
+//  * This is the root state of the app
+//  * It contains every substate of the app
+//  */
 
- export interface State {
-   todos: fromTodos.State
- }
+//  export interface IState {
+//    todos: fromTodos.IState
+//  }
 
-/*
- * initialState of the app
- */
+// /*
+//  * initialState of the app
+//  */
 
- export const initialState: State = {
-   todos: fromTodos.initialState
- }
+//  export const initialState: IState = {
+//    todos: fromTodos.initialState
+//  }
 
- /*
- * Root reducer of the app
- * returns reducer will be of type Reducer<State></State>
- */
+//  /*
+//  * Root reducer of the app
+//  * returns reducer will be of type Reducer<State></State>
+//  */
 
- export const rootReducer = combineReducers({
-   todos: fromTodos.todoReducer
- })
+//  export const rootReducer = combineReducers({
+//    todos: fromTodos.todoReducer
+//  })
 

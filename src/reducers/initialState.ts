@@ -1,8 +1,8 @@
 import Todo from '../models/Todo'
 
-export interface State {
+export interface IState {
   todos: Todo[]
 }
-export const initialState: State = {
+export const initialState: IState = {
   todos: []
 }

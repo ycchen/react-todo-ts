@@ -30,5 +30,12 @@
     "no-console": false //Disable for javascript
   }
 ```
+#### Resources
+```
+https://blog.usejournal.com/using-react-with-redux-and-typescript-c7ec48c211f6
+
+https://github.com/piotrwitek/react-redux-typescript-guide
+
 https://github.com/Nemak121/react-redux-todo-ts
 https://www.youtube.com/watch?v=jXu4H8qeFSk
+```

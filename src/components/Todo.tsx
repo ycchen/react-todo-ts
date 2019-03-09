@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-interface AppProps {
+interface IAppProps {
   todo: {
     text: string
   }
 }
 
-const Todo: React.SFC<AppProps> = (props) => {
+const Todo: React.SFC<IAppProps> = (props) => {
   return (
     <a>{props.todo.text}</a>
   )

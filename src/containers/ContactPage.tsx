@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-interface AppProps {
+interface IAppProps {
   contact: {}
 }
 
-export default class ContactPage extends React.Component<AppProps> {
+export default class ContactPage extends React.Component<IAppProps> {
   public render() {
     return (
       <div>

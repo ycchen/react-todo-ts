@@ -25,13 +25,13 @@ export enum ActionTypes {
 * Every action returns a type and a payload
 */
 
-export interface AddTodoAction {
+export interface IAddTodoAction {
   type: ActionTypes.ADD_TODO,
   payload: { todo: Todo }
 }
 
 
-export interface ToggleTodoAction {
+export interface IToggleTodoAction {
   type: ActionTypes.TOGGLE_TODO,
   payload: {todoId: number}
 }
@@ -41,7 +41,7 @@ export interface ToggleTodoAction {
 * We are returning the right Action for each function
 */
 
-export const addTodo = (text: string): AddTodoAction => {
+export const addTodo = (text: string): IAddTodoAction => {
   return {
     type: ActionTypes.ADD_TODO,
     payload: {
@@ -53,7 +53,7 @@ export const addTodo = (text: string): AddTodoAction => {
   }  
 }
 
-export const toggleTodo = (todoId: number): ToggleTodoAction {
+export const toggleTodo = (todoId: number): IToggleTodoAction {
   return {
     type: ActionTypes.TOGGLE_TODO,
     payload: {
@@ -61,7 +61,7 @@ export const toggleTodo = (todoId: number): ToggleTodoAction {
     }
   }
 }
-export type Action = AddTodoAction | ToggleTodoAction
+export type Action = IAddTodoAction | IToggleTodoAction
 
 // export const createTodo = (todo: string) => {
 //   return(dispatch: any) => {
