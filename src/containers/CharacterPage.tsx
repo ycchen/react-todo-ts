@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect }from 'react-redux'
 import { IAppState } from '../store'
-import { ICharacter } from '../reducers/CharacterReducers'
+import { ICharacter } from '../models/Character'
 import { RouteComponentProps } from "react-router-dom"
 import { bindActionCreators, Dispatch } from 'redux'
 import { getAllCharacters } from '../actions/CharacterActions'
@@ -44,11 +44,9 @@ class CharacterPage extends React.Component<IProps> {
         <h3>The Force Awakens</h3>
         {characters && characters.map(character => {
           return(
-            <>
-              <span key={character.name} className="name">
-                {character.name}
-              </span><br/>
-            </>
+            <span key={character.name} className="name">
+              {character.name}<br/>
+            </span>
           )
         })}
       </div>

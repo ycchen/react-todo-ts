@@ -1,27 +1,38 @@
-import { Action, ActionTypes  } from '../actions/TodoActions'
-import Todo from '../models/Todo'
+import { Reducer } from 'redux'
 
-export interface IState {
-  todos: Todo[]
+import { 
+  TodoActions,
+  TodoActionTypes
+} from '../types/TodoTypes'
+
+import ITodo from '../models/Todo'
+
+// define the Todo State Interface
+export interface ITodoState {
+  readonly todos: ITodo[]
 }
-export const initialState: IState = {
+
+export const initialTodoState: ITodoState = {
   todos: []
 }
 
-export function todoReducer(state: IState = initialState, 
-  action: Action) {
-
+export const todoReducer: Reducer<ITodoState, TodoActions> = (
+  state = initialTodoState, 
+  action
+  ) => {
+    console.log('Todo action.type=', action.type)
     switch (action.type){
-      case ActionTypes.ADD_TODO {
+      case TodoActionTypes.GET_ALL: {
         return {
-          ...state
+          ...state,
+          todos: action.todos
         }
       }
-      case ActionTypes.TOGGLE_TODO {
-        return {
-          ...state
-        }
-      }
+      // case ActionTypes.TOGGLE_TODO {
+      //   return {
+      //     ...state
+      //   }
+      // }
       default:
         return state
     }

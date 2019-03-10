@@ -1,6 +1,6 @@
 // Import Character Typing
 // import { ICharacter, ICharacterState } from '../reducers/CharacterReducers'
-import { ICharacter } from '../reducers/CharacterReducers'
+import { ICharacter } from '../models/Character'
 
 // create Action Constants
 export enum CharacterActionTypes {

@@ -19,15 +19,21 @@ import {
   ICharacterState
 } from '../reducers/CharacterReducers'
 
+import {
+  todoReducer,
+  ITodoState
+} from '../reducers/TodoReducers'
 
 // Create an interface for the application state
 export interface IAppState {
   characterState: ICharacterState
+  todoState: ITodoState
 }
 
 // Create the root reducer
 const rootReducer = combineReducers<IAppState>({
   characterState: characterReducer,
+  todoState: todoReducer
 })
 
 // Create a configure store function of type `IAppState`
