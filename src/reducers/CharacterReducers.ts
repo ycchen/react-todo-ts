@@ -2,7 +2,7 @@ import { Reducer } from 'redux'
 import {
   CharacterActions,
   CharacterActionTypes
-} from '../actions/CharacterActions'
+} from '../types/CharacterTypes'
 
 // Define the Character type
 export interface ICharacter {
