@@ -38,6 +38,7 @@ export const getAllCharacters: ActionCreator<
         console.log('before axios.get ===', Date.now().toString())
         const response = await axios.get(apiUrl)
         console.log('after axios.get ===', Date.now().toString())
+        console.log('characters response=',response.data.results)
         dispatch({
           type: CharacterActionTypes.GET_ALL,
           characters: response.data.results
