@@ -25,12 +25,12 @@ class TodoPage extends React.Component<IProps> {
       <div>
         Todo Page
         <h4>Todo List</h4>
-        <TodoList todos={[]} />
-        {todos && todos.map(todo => {
+        <TodoList todos={todos} />
+        {/* {todos && todos.map(todo => {
           return(
             <div key={todo.id}>{todo.text}</div>
           )
-        })}
+        })} */}
       </div>
     );
   }
