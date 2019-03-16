@@ -4,6 +4,7 @@ import { ThunkAction } from 'redux-thunk'
 import axios from 'axios'
 import {
   ITodoGetAllAction,
+  ITodoAddTodoAction,
   TodoActionTypes
 } from '../types/TodoTypes'
 import { ITodoState } from '../reducers/TodoReducers'
@@ -28,6 +29,25 @@ export const getAllTodos: ActionCreator<
   }
 }
 
+export const addTodo: ActionCreator<
+  ThunkAction<Promise<any>, ITodoState, null, ITodoAddTodoAction>
+> = (todo: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      console.log('todo=', todo)
+      console.log('before Todo axios.post = ', Date.now().toString())
+      const response = await axios.post(apiUrl, {text: todo})
+      console.log('after Todo axios.post = ', Date.now().toString())
+      console.log('add todo response = ', response.data)
+      dispatch({
+        type: TodoActionTypes.ADD_TODO,
+        todo: response.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 
 /*
 * In order to automatically generate id for our todos

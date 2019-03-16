@@ -7,7 +7,7 @@ import ITodo from '../models/Todo'
 */
 export enum TodoActionTypes {
   GET_ALL = 'GET_ALL',
-  // ADD_TODO = 'ADD_TODO',
+  ADD_TODO = 'ADD_TODO',
   // TOGGLE_TODO = 'TOGGLE_TODO'
 }
 
@@ -21,11 +21,10 @@ export interface ITodoGetAllAction {
   todos: ITodo[]
 }
 
-
-// export interface IAddTodoAction {
-//   type: TodoActionTypes.ADD_TODO,
-//   payload: { todo: ITodo }
-// }
+export interface ITodoAddTodoAction {
+  type: TodoActionTypes.ADD_TODO,
+  todo: ITodo
+}
 
 
 // export interface IToggleTodoAction {
@@ -33,4 +32,4 @@ export interface ITodoGetAllAction {
 //   payload: {todoId: number}
 // }
 
-export type TodoActions = ITodoGetAllAction;
+export type TodoActions = ITodoGetAllAction | ITodoAddTodoAction;

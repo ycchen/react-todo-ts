@@ -28,11 +28,13 @@ export const todoReducer: Reducer<ITodoState, TodoActions> = (
           todos: action.todos
         }
       }
-      // case ActionTypes.TOGGLE_TODO {
-      //   return {
-      //     ...state
-      //   }
-      // }
+      case TodoActionTypes.ADD_TODO: {
+        const todo = action.todo
+        return {
+          ...state,
+          todos: [...state.todos, todo]
+        }
+      }
       default:
         return state
     }
