@@ -16,7 +16,7 @@ export default class ContactCard extends React.Component<IProps, any> {
         <Card.Content>
           <Image floated='right' size='mini' src={avator} />
           <Card.Header>
-            {id} { firstName } { lastName }
+            { firstName } { lastName }
           </Card.Header>
           <Card.Description>
             <p><Icon name='phone'>{ phone }</Icon></p>
