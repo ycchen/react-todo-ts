@@ -5,13 +5,14 @@ import { IAppState } from '../store'
 import ITodo from '../models/Todo'
 import { RouteComponentProps } from 'react-router-dom'
 import { bindActionCreators, Dispatch  } from 'redux'
-import { getAllTodos, addTodo } from '../actions/TodoActions'
+import { getAllTodos, addTodo, deleteTodo } from '../actions/TodoActions'
 import TodoForm from '../components/TodoForm'
 
 export interface IProps extends RouteComponentProps {
   todos: ITodo[];
   getAllTodos: typeof getAllTodos
   addTodo: typeof addTodo
+  deleteTodo: typeof deleteTodo
 }
 
 class TodoPage extends React.Component<IProps> {
@@ -22,13 +23,13 @@ class TodoPage extends React.Component<IProps> {
   }
   public render() {
     console.log('this.props inside of TodoPage container', this.props)
-    const { todos, addTodo } = this.props
+    const { todos, addTodo, deleteTodo } = this.props
     return (
       <div>
         Todo Page
-        <h4>Todo List</h4>
+        <h4>Todo List ({todos && todos.length})</h4>
         <TodoForm handleAddTodo={addTodo} />
-        <TodoList todos={todos} />
+        <TodoList todos={todos} deleteTodo={deleteTodo} />
       </div>
     );
   }
@@ -43,7 +44,7 @@ const mapStateToProps = (store: IAppState) => {
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...bindActionCreators(
-      {getAllTodos, addTodo},
+      {getAllTodos, addTodo, deleteTodo},
       dispatch
     )
   }

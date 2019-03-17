@@ -35,6 +35,13 @@ export const todoReducer: Reducer<ITodoState, TodoActions> = (
           todos: [...state.todos, todo]
         }
       }
+      case TodoActionTypes.DELETE_TODO: {
+        const id = action.id
+        return {
+          ...state,
+          todos: state.todos.filter(item => item.id !== id)
+        }
+      }
       default:
         return state
     }

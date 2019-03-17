@@ -5,6 +5,7 @@ import axios from 'axios'
 import {
   ITodoGetAllAction,
   ITodoAddTodoAction,
+  ITodoDeleteTodoAction,
   TodoActionTypes
 } from '../types/TodoTypes'
 import { ITodoState } from '../reducers/TodoReducers'
@@ -49,6 +50,25 @@ export const addTodo: ActionCreator<
   }
 }
 
+export const deleteTodo: ActionCreator<
+  ThunkAction<Promise<any>, ITodoState, null, ITodoDeleteTodoAction>
+> = (id: number) => {
+  return async(dispatch: Dispatch) => {
+    try {
+      console.log('todo id=', id)
+      console.log('before Todo axios.delete = ', Date.now().toString())
+      const response = await axios.delete(`${apiUrl}/${id}`)
+      console.log('after Todo axios.delete = ', Date.now().toString())
+      console.log('add todo response = ', response.data)
+      dispatch({
+        type: TodoActionTypes.DELETE_TODO,
+        id
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 /*
 * In order to automatically generate id for our todos
 */ 
