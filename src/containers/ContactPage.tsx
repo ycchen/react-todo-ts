@@ -5,6 +5,7 @@ import { RouteComponentProps} from 'react-router-dom'
 import { bindActionCreators, Dispatch} from 'redux'
 import { getAllContacts } from '../actions/ContactActions'
 import IContact from '../models/Contact'
+import ContactList from '../components/ContactList'
 
 export interface IProps extends RouteComponentProps {
   contacts: IContact[];
@@ -23,7 +24,8 @@ class ContactPage extends React.Component<IProps> {
     return (
       <div>
         <h4>Contact Page</h4>
-        {contacts && contacts.map(contact => {
+        <ContactList contacts={contacts} />
+        {/* {contacts && contacts.map(contact => {
           return (
             <div key={contact.id}>
               First Name: {contact.firstName}<br/>
@@ -32,7 +34,7 @@ class ContactPage extends React.Component<IProps> {
               Email: {contact.email}<br/>
             </div>
           )
-        })}
+        })} */}
       </div>
     );
   }
