@@ -13,21 +13,36 @@ or to dispatch only if a certain condition is met.
 The inner function receives the store methods dispatch and getState as parameters 
 */
 import thunk from 'redux-thunk'
+
 //  Import reducers and state type
 import { 
   characterReducer,
   ICharacterState
 } from '../reducers/CharacterReducers'
 
+import {
+  todoReducer,
+  ITodoState
+} from '../reducers/TodoReducers'
+
+import {
+  contactReducer,
+  IContactState
+} from '../reducers/ContactReducers'
+
 
 // Create an interface for the application state
 export interface IAppState {
-  characterState: ICharacterState
+  characterState: ICharacterState;
+  todoState: ITodoState;
+  contactState: IContactState;
 }
 
 // Create the root reducer
 const rootReducer = combineReducers<IAppState>({
   characterState: characterReducer,
+  todoState: todoReducer,
+  contactState: contactReducer
 })
 
 // Create a configure store function of type `IAppState`

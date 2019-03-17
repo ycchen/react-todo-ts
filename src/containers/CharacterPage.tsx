@@ -1,14 +1,41 @@
 import * as React from 'react';
 import { connect }from 'react-redux'
 import { IAppState } from '../store'
-import { ICharacter } from '../reducers/CharacterReducers'
+import { ICharacter } from '../models/Character'
+import { RouteComponentProps } from "react-router-dom"
+import { bindActionCreators, Dispatch } from 'redux'
+import { getAllCharacters } from '../actions/CharacterActions'
 
-// Create the containers interface
-export interface IProps {
-  characters: ICharacter[]
+/* We can use RouteComponentProps to combine Props (IProp, IPropsFromDispatch)
+  export interface IProps extends RouteComponentProps {
+    characters: ICharacter[];
+    getAllCharacters: typeof getAllCharacters
+  }
+*/
+
+/* Create the containers interface
+  export interface IProps {
+    characters: ICharacter[];
+  }
+
+  interface IPropsFromDispatch {
+    getAllCharacters: typeof getAllCharacters
+  }
+// type AllProps = IPropsFromDispatch & IProps
+*/
+
+export interface IProps extends RouteComponentProps {
+  characters: ICharacter[];
+  getAllCharacters: typeof getAllCharacters
 }
 
-class CharacterPage extends React.Component<IProps, any> {
+class CharacterPage extends React.Component<IProps> {
+  
+  public componentDidMount() {
+    console.log('====Character Page com didm mount', this.props)
+    this.props.getAllCharacters()
+  }
+
   public render() {
     console.log('this.props inside of CharacterList container', this.props)
     const { characters } = this.props
@@ -17,11 +44,9 @@ class CharacterPage extends React.Component<IProps, any> {
         <h3>The Force Awakens</h3>
         {characters && characters.map(character => {
           return(
-            <>
-              <span key={character.name} className="name">
-                {character.name}
-              </span><br/>
-            </>
+            <span key={character.name} className="name">
+              {character.name}<br/>
+            </span>
           )
         })}
       </div>
@@ -36,4 +61,20 @@ const mapStateToProps = (store: IAppState) => {
   }
 }
 
-export default connect(mapStateToProps)(CharacterPage)
+// const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    ...bindActionCreators(
+      { getAllCharacters },
+      dispatch
+    )
+    // or
+    // getAllCharacters: () => dispatch(getAllCharacters())
+  }
+    
+}
+
+export default connect(
+  mapStateToProps, 
+  mapDispatchToProps
+)(CharacterPage)

@@ -9,7 +9,7 @@ import { Store } from 'redux'
 
 // Import the store function and state
 import configureStore, { IAppState } from './store'
-import {getAllCharacters} from './actions/CharacterActions'
+// import {getAllCharacters} from './actions/CharacterActions'
 
 import registerServiceWorker from './registerServiceWorker';
 
@@ -26,7 +26,7 @@ const Root: React.SFC<IProps> = props => {
 }
 
 const store = configureStore()
-store.dispatch(getAllCharacters())
+// store.dispatch(getAllCharacters())
 
 ReactDOM.render(
   <Root store={store} />,

@@ -1,67 +1,105 @@
-import Todo from '../models/Todo'
 
-// import axios from 'axios'
+import { ActionCreator, Dispatch } from "redux";
+import { ThunkAction } from 'redux-thunk'
+import axios from 'axios'
+import {
+  ITodoGetAllAction,
+  ITodoAddTodoAction,
+  ITodoDeleteTodoAction,
+  TodoActionTypes
+} from '../types/TodoTypes'
+import { ITodoState } from '../reducers/TodoReducers'
+const apiUrl = 'https://5c6ac9b9d98e3600141cab70.mockapi.io/api/todos'
 
-// const apiUrl = 'https://5c6ac9b9d98e3600141cab70.mockapi.io/api/todos'
+export const getAllTodos: ActionCreator<
+  ThunkAction<Promise<any>, ITodoState, null, ITodoGetAllAction>
+> = () => {
+  return async (dispatch: Dispatch) => {
+    try {
+      console.log('before Todo axios.get = ', Date.now().toString())
+      const response = await axios.get(apiUrl)
+      console.log('after Todo axios.get = ', Date.now().toString())
+      console.log('todos response=',response.data)
+      dispatch({
+        type: TodoActionTypes.GET_ALL,
+        todos: response.data
+      })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+}
 
+export const addTodo: ActionCreator<
+  ThunkAction<Promise<any>, ITodoState, null, ITodoAddTodoAction>
+> = (todo: string) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      console.log('todo=', todo)
+      console.log('before Todo axios.post = ', Date.now().toString())
+      const response = await axios.post(apiUrl, {text: todo})
+      console.log('after Todo axios.post = ', Date.now().toString())
+      console.log('add todo response = ', response.data)
+      dispatch({
+        type: TodoActionTypes.ADD_TODO,
+        todo: response.data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const deleteTodo: ActionCreator<
+  ThunkAction<Promise<any>, ITodoState, null, ITodoDeleteTodoAction>
+> = (id: number) => {
+  return async(dispatch: Dispatch) => {
+    try {
+      console.log('todo id=', id)
+      console.log('before Todo axios.delete = ', Date.now().toString())
+      const response = await axios.delete(`${apiUrl}/${id}`)
+      console.log('after Todo axios.delete = ', Date.now().toString())
+      console.log('add todo response = ', response.data)
+      dispatch({
+        type: TodoActionTypes.DELETE_TODO,
+        id
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
 /*
 * In order to automatically generate id for our todos
 */ 
-let nextId = 0
-
-/*
-* We are defining every action name constant here
-* We are using Typescript's enum
-* Typescript understand enum better
-*/
-export enum ActionTypes {
-  ADD_TODO = '[todos] ADD_TODO',
-  TOGGLE_TODO = '[todos] TOGGLE_TODO'
-}
-
-
-/*
-* Define return types of our actions
-* Every action returns a type and a payload
-*/
-
-export interface IAddTodoAction {
-  type: ActionTypes.ADD_TODO,
-  payload: { todo: Todo }
-}
-
-
-export interface IToggleTodoAction {
-  type: ActionTypes.TOGGLE_TODO,
-  payload: {todoId: number}
-}
+// let nextId = 0
 
 /*
 * Define our action creators
 * We are returning the right Action for each function
 */
 
-export const addTodo = (text: string): IAddTodoAction => {
-  return {
-    type: ActionTypes.ADD_TODO,
-    payload: {
-      todo: {
-          id: nextId++,
-          text
-      }
-    }
-  }  
-}
+// export const addTodo = (text: string): IAddTodoAction => {
+//   return {
+//     type: ActionTypes.ADD_TODO,
+//     payload: {
+//       todo: {
+//           id: nextId++,
+//           text
+//       }
+//     }
+//   }  
+// }
 
-export const toggleTodo = (todoId: number): IToggleTodoAction {
-  return {
-    type: ActionTypes.TOGGLE_TODO,
-    payload: {
-      todoId
-    }
-  }
-}
-export type Action = IAddTodoAction | IToggleTodoAction
+// export const toggleTodo = (todoId: number): IToggleTodoAction {
+//   return {
+//     type: ActionTypes.TOGGLE_TODO,
+//     payload: {
+//       todoId
+//     }
+//   }
+// }
+// export type Action = IAddTodoAction | IToggleTodoAction
 
 // export const createTodo = (todo: string) => {
 //   return(dispatch: any) => {

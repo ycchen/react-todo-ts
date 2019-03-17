@@ -2,27 +2,28 @@ import { Reducer } from 'redux'
 import {
   CharacterActions,
   CharacterActionTypes
-} from '../actions/CharacterActions'
-
+} from '../types/CharacterTypes'
+import { ICharacter } from '../models/Character'
+ 
 // Define the Character type
-export interface ICharacter {
-  name: string;
-  height: string;
-  mass: string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  homeworld: string;
-  films: string[];
-  species: string[];
-  vehicles: string[];
-  starships: string[];
-  created: string;
-  edited: string;
-  url: string;
-}
+// export interface ICharacter {
+//   name: string;
+//   height: string;
+//   mass: string;
+//   hair_color: string;
+//   skin_color: string;
+//   eye_color: string;
+//   birth_year: string;
+//   gender: string;
+//   homeworld: string;
+//   films: string[];
+//   species: string[];
+//   vehicles: string[];
+//   starships: string[];
+//   created: string;
+//   edited: string;
+//   url: string;
+// }
 
 // Define the Character State
 export interface ICharacterState {
@@ -38,7 +39,7 @@ export const characterReducer: Reducer<ICharacterState, CharacterActions> = (
   state = initialCharacterState, 
   action
 ) => {
-  console.log('action.type=', action.type)
+  console.log('Character action.type=', action.type)
   switch (action.type) {
     case CharacterActionTypes.GET_ALL: {
       return {

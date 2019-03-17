@@ -1,14 +1,28 @@
 import * as React from 'react';
-
-interface IAppProps {
-  todo: {
-    text: string
-  }
+import ITodo from '../models/Todo'
+import { deleteTodo } from '../actions/TodoActions'
+interface IProps {
+  todo: ITodo
+  deleteTodo: typeof deleteTodo
 }
 
-const Todo: React.SFC<IAppProps> = (props) => {
+
+const Todo: React.SFC<IProps> = (props) => {
+  // console.log(props)
+  const handleClick = (todoId: number) => {
+    console.log('delete ', todoId)
+    props.deleteTodo(todoId)  
+  }
+
+  const {id, text} = props.todo
   return (
-    <a>{props.todo.text}</a>
+    <div>
+      <a className="list-group-item" 
+          onClick={ () => handleClick(id)}
+          >
+        {text}
+      </a>
+    </div>
   )
 };
 

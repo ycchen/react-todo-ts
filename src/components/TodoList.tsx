@@ -1,61 +1,23 @@
-import * as React from 'react';
-import Todo from '../models/Todo'
-
-interface IAppProps {
-  todos: Todo[]
+import * as React from 'react'
+import ITodo from '../models/Todo'
+import Todo from './Todo'
+import { deleteTodo } from '../actions/TodoActions'
+interface IProps {
+  todos: ITodo[]
+  deleteTodo: typeof deleteTodo
 }
 
-interface IState {
-  todo: string
-  todos: Todo[]
-}
 
-class TodoList extends React.Component<IAppProps, IState> {
-  constructor(props: IAppProps) {
-    super(props)
-  
-    this.state = {
-      todo: '',
-      todos: []
-    }
-  }
-  
-
-  public handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(this.state.todo)
-    this.setState({todo: ''})
-  }
-
-  public handleInputChange = (e: any) => {
-    this.setState({
-      todo: e.target.value
-    })
-  }
-  public renderTodos = () => {
-    return (
-      this.props.todos.map((todo: Todo, index: number) => {
-        return (
-          <div key={index}>{todo}</div>
-        )
-      })
-    )
-  }
-
+class TodoList extends React.Component<IProps> {
   public render() {
-    const { todo } = this.state
+    const { todos, deleteTodo } = this.props
     return (
       <div>
-        Todo list ({this.props.todos.length})
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" 
-            placeholder="Add a Task"
-            onChange={this.handleInputChange }
-            value={ todo } />
-          <button type="submit">Add Task</button>
-        </form>
-
-        <section>todos: { this.renderTodos()}</section>
+        {todos && todos.map(todo => {
+          return (
+            <Todo todo={todo}  key={todo.id} deleteTodo={deleteTodo} />
+          )
+        })}
       </div>
     );
   }
