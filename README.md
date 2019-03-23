@@ -1,5 +1,9 @@
 # my-react-ts
 
+## Screen shots
+
+<img width="1132" alt="Screen Shot 2019-03-23 at 2 37 51 PM" src="https://user-images.githubusercontent.com/339032/54870163-46758800-4d79-11e9-8fb6-d4583b5b5d11.png">
+<img width="1135" alt="Screen Shot 2019-03-23 at 2 38 34 PM" src="https://user-images.githubusercontent.com/339032/54870175-5d1bdf00-4d79-11e9-9d9e-a6c0eb25328f.png">
 
 ## Start the application
 
