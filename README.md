@@ -30,6 +30,13 @@
     "no-console": false //Disable for javascript
   }
 ```
+
+#### disable / enable typescript compiler options
+```
+https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+ // "noUnusedLocals": true,   # by default "noUnusedLocals": false,
+```
 #### Resources
 ```
 https://blog.usejournal.com/using-react-with-redux-and-typescript-c7ec48c211f6

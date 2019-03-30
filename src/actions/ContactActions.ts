@@ -3,6 +3,7 @@ import { ThunkAction } from 'redux-thunk'
 import axios from 'axios'
 import {
   IContactGetAllAction,
+  IContactGetContactAction,
   ContactActionTypes
 } from '../types/ContactTypes'
 
@@ -25,6 +26,26 @@ export const getAllContacts: ActionCreator<
       })
     } catch (error) {
       console.error(error)
+    }
+  }
+}
+
+export const getContact: ActionCreator<
+  ThunkAction<Promise<any>, IContactState, null, IContactGetContactAction>
+> = (id: number) => {
+  return async (dispatch: Dispatch) => {
+    try {
+      console.log('before Contact axios.get= ', Date.now().toString())
+      const response = await axios.get(`${apiUrl}/${id}`)
+      console.log('after Contact axios.get= ', Date.now().toString())
+      console.log('contact response=',response.data)
+      console.log('here is where you dispatch GET_CONTACT action')
+      dispatch({
+        type: ContactActionTypes.GET_CONTACT,
+        contact: response.data
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }

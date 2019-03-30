@@ -6,6 +6,7 @@ import ContactPage from './containers/ContactPage'
 import CharacterPage from './containers/CharacterPage'
 import HomePage from './containers/HomePage'
 import TodoPage from './containers/TodoPage'
+import ContactFormPage from './containers/ContactFormPage'
 
 class App extends React.Component {
   public render() {
@@ -22,6 +23,8 @@ class App extends React.Component {
         <Route exact={true} path="/todos" component={TodoPage} />
         <Route exact={true} path="/characters" component={CharacterPage} />
         <Route exact={true} path="/contacts" component={ContactPage} />
+        <Route exact={true} path="/contacts/edit/:id" component={ContactFormPage} />
+
       </Container>
     </BrowserRouter>
     );

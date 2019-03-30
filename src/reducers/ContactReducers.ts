@@ -10,11 +10,13 @@ import IContact from '../models/Contact'
 // define the Contact State
 export interface IContactState {
   readonly contacts: IContact[];
+  readonly contact: IContact | null;
 }
 
 // define initialContactState
 const initialContactState: IContactState = {
-  contacts: []
+   contacts: [],
+   contact: null
 }
 
 export const contactReducer: Reducer<IContactState, ContactActions> = (
@@ -27,6 +29,12 @@ export const contactReducer: Reducer<IContactState, ContactActions> = (
       return {
         ...state,
         contacts: action.contacts
+      }
+    }
+    case ContactActionTypes.GET_CONTACT: {
+      return {
+        ...state,
+        contact: action.contact
       }
     }
     default:
