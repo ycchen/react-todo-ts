@@ -14,38 +14,32 @@ export interface IProps extends RouteComponentProps<{id: string}> {
 }
 
 
-class ContactFormPage extends React.Component<IProps> {
+class ContactNewFormPage extends React.Component<IProps> {
   
   public componentDidMount = () => {
     const { id } = this.props.match.params
     if (id) {
       console.log('this.props.match.params.id', id)
-      console.log("==============getContact====================")
       // getContact
       this.props.getContact(id)
-      console.log("==============access to the state====================")
     } else {
       // newContact
       this.props.newContact
       console.log('newcontact =========')
+      console.log(this.props.contact)
     }
-  } 
-
+  }
+  
   public submit = (contact: any) => {
-    console.log("====submit from ContactFormPage===")
+    console.log("====submit from ContactNewFormPage===")
   }
 
   public render() {
     const { contact } = this.props
     return (
       <div>
-        Contact Edit Form page
-        { contact ? (
-            <ContactForm onSubmit={this.submit} />
-          ) : (
-            <ContactForm onSubmit={this.submit} />
-          )
-        }
+        Contact New Form page
+        <ContactForm onSubmit={this.submit} />
       </div>
     );
   }
@@ -69,5 +63,5 @@ const mapDispoatchToProps = (dispatch: Dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispoatchToProps
-)(ContactFormPage)
+)(ContactNewFormPage)
 

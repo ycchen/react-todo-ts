@@ -4,6 +4,7 @@ import axios from 'axios'
 import {
   IContactGetAllAction,
   IContactGetContactAction,
+  IContactNewContactAction,
   ContactActionTypes
 } from '../types/ContactTypes'
 
@@ -47,5 +48,13 @@ export const getContact: ActionCreator<
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export const newContact = () => {
+  return(dispatch: Dispatch) => {
+    dispatch({
+      type: 'NEW_CONTACT'
+    })
   }
 }

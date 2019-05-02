@@ -23,7 +23,7 @@ export const contactReducer: Reducer<IContactState, ContactActions> = (
   state = initialContactState,
   action
 ) => {
-  console.log('Contact action.type=', action.type)
+  // console.log('Contact action.type=', action.type)
   switch (action.type) {
     case ContactActionTypes.GET_ALL: {
       return {
@@ -35,6 +35,12 @@ export const contactReducer: Reducer<IContactState, ContactActions> = (
       return {
         ...state,
         contact: action.contact
+      }
+    }
+    case ContactActionTypes.NEW_CONTACT: {
+      return {
+        ...state,
+        contact: null
       }
     }
     default:

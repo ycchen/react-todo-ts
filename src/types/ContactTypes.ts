@@ -8,7 +8,8 @@ import IContact from '../models/Contact'
 // create Action Constants
 export enum ContactActionTypes {
   GET_ALL = 'GET_ALL',
-  GET_CONTACT = 'GET_CONTACT'
+  GET_CONTACT = 'GET_CONTACT',
+  NEW_CONTACT = 'NEW_CONTACT'
 }
 
 // Interface for Get_All Action Type
@@ -21,10 +22,16 @@ export interface IContactGetContactAction {
   type: ContactActionTypes.GET_CONTACT,
   contact: IContact
 }
+
+export interface IContactNewContactAction {
+  type: ContactActionTypes.NEW_CONTACT,
+  contact: IContact
+}
 /*
   Combie the action types with a union (we assume there are more)
   example: `export type ContactActions = IContactGetAllAction | IContactGetOneAction
 */
 
 export type ContactActions = IContactGetAllAction
-| IContactGetContactAction;
+| IContactGetContactAction
+| IContactNewContactAction;

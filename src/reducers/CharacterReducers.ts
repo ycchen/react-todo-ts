@@ -39,7 +39,7 @@ export const characterReducer: Reducer<ICharacterState, CharacterActions> = (
   state = initialCharacterState, 
   action
 ) => {
-  console.log('Character action.type=', action.type)
+  // console.log('Character action.type=', action.type)
   switch (action.type) {
     case CharacterActionTypes.GET_ALL: {
       return {

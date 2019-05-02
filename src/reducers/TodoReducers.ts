@@ -20,7 +20,7 @@ export const todoReducer: Reducer<ITodoState, TodoActions> = (
   state = initialTodoState, 
   action
   ) => {
-    console.log('Todo action.type=', action.type)
+    // console.log('Todo action.type=', action.type)
     switch (action.type){
       case TodoActionTypes.GET_ALL: {
         return {
